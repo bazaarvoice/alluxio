@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 if [ ! -d "/opt/alluxio" ]; then
-    git clone -b branch-1.7 https://github.com/thaibui/alluxio.git /opt/alluxio
+    git clone -b branch-1.7 https://github.com/bazaarvoice/alluxio.git /opt/alluxio
 fi
 cd /opt/alluxio
 git pull
