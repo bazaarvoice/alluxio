@@ -1,0 +1,27 @@
+[Unit]
+Description=Alluxio Master Service
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/var/run/alluxio/alluxio-master.service.pid
+
+# user
+User=alluxio
+Group=alluxio
+
+# system limits
+LimitNOFILE=128000
+
+# auto restart
+RemainAfterExit=no
+Restart=on-failure
+RestartSec=2s
+
+# start/stop command
+ExecStart=/bin/java -cp /opt/alluxio/conf/::/opt/alluxio/assembly/server/target/alluxio-assembly-server-1.7.2-SNAPSHOT-jar-with-dependencies.jar -Dalluxio.home=/opt/alluxio -Dalluxio.logs.dir=/var/log/alluxio -Dlog4j.configuration=file:/opt/alluxio/conf/log4j.properties -Dorg.apache.jasper.compiler.disablejsr199=true -Djava.net.preferIPv4Stack=true -Dalluxio.logger.type=MASTER_LOGGER alluxio.master.AlluxioMaster
+ExecStop=/bin/kill -- $MAINPID
+
+# log output to journalctl
+StandardOutput=journal
+StandardError=journal

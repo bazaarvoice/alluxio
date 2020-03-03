@@ -3,8 +3,17 @@ set -e
 set -o errexit
 
 cp /opt/alluxio/deploy/ambari/recipe/alluxio-masterd /etc/init.d/
+ln -sf /opt/alluxio/deploy/ambari/recipe/alluxio-master.service /etc/systemd/system/
+
 cp /opt/alluxio/deploy/ambari/recipe/alluxio-workerd /etc/init.d/
+ln -sf /opt/alluxio/deploy/ambari/recipe/alluxio-worker.service /etc/systemd/system/
+
 cp /opt/alluxio/deploy/ambari/recipe/alluxio-proxyd /etc/init.d/
+ln -sf /opt/alluxio/deploy/ambari/recipe/alluxio-proxy.service /etc/systemd/system/
+
+systemctl enable alluxio-master.service
+systemctl enable alluxio-worker.service
+systemctl enable alluxio-proxy.service
 
 chkconfig --add alluxio-masterd
 chkconfig --add alluxio-workerd
