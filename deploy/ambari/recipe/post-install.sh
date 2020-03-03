@@ -11,10 +11,6 @@ ln -sf /opt/alluxio/deploy/ambari/recipe/alluxio-worker.service /etc/systemd/sys
 cp /opt/alluxio/deploy/ambari/recipe/alluxio-proxyd /etc/init.d/
 ln -sf /opt/alluxio/deploy/ambari/recipe/alluxio-proxy.service /etc/systemd/system/
 
-systemctl enable alluxio-master.service
-systemctl enable alluxio-worker.service
-systemctl enable alluxio-proxy.service
-
 chkconfig --add alluxio-masterd
 chkconfig --add alluxio-workerd
 chkconfig --add alluxio-proxyd
