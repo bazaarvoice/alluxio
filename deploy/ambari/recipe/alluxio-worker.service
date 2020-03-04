@@ -3,7 +3,7 @@ Description=Alluxio Worker Service
 After=network.target
 
 [Service]
-Type=forking
+Type=simple
 PIDFile=/var/run/alluxio/alluxio-worker.service.pid
 
 # user

@@ -3,7 +3,7 @@ Description=Alluxio Proxy API Service
 After=network.target
 
 [Service]
-Type=forking
+Type=simple
 PIDFile=/var/run/alluxio/alluxio-proxy.service.pid
 
 # user
