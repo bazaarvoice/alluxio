@@ -14,6 +14,10 @@ case $key in
     MASTER="$2"
     shift # past argument
     ;;
+    --zookeeper-address)
+    ZK_ADDRESS="$2"
+    shift # past argument
+    ;;
     --worker-mem)
     WORKER_MEM="$2"
     shift # past argument
@@ -65,6 +69,7 @@ fi
 
 echo "Alluxio installed dir: $ALLUXIO_DIR"
 echo "Master hostname: $MASTER"
+echo "Zookeeper address: $ZK_ADDRESS"
 echo "Worker memory: $WORKER_MEM"
 echo "Worker SSD: $WORKER_SSD"
 echo "Worker SSD directory: $WORKER_SSD_DIR"
@@ -73,6 +78,7 @@ echo "Mount worker: $MOUNT_WORKER"
 echo "Configuring .. $ALLUXIO_DIR/conf/alluxio-site.properties"
 sudo -u alluxio cat $ALLUXIO_DIR/conf/alluxio-site.properties.template | \
     sed "s/{{master}}/$MASTER/g" | \
+    sed "s/{{zookeeper_address}}/$ZK_ADDRESS/g" | \
     sed "s/{{worker-ssd}}/$WORKER_SSD/g" | \
     sed "s|{{worker-ssd-dir}}|$WORKER_SSD_DIR|g" | \
     sed "s/{{worker-mem}}/$WORKER_MEM/g" \
