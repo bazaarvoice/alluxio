@@ -23,7 +23,7 @@ alluxio.integration.master.resource.mem=4096MB
 alluxio.master.journal.type=NOOP
 alluxio.master.mount.table.root.ufs=hdfs://raven
 alluxio.zookeeper.enabled=true
-alluxio.zookeeper.address={{zookeper_address}}
+alluxio.zookeeper.address={{zookeeper_address}}
 
 # worker-2-master has a very short heartbeat workers can come/leave fast
 alluxio.master.worker.timeout=17s
